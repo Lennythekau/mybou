@@ -1,0 +1,36 @@
+.sidebar {
+    background-color: var(--c-dark-grey);
+    color: rgb(175, 153, 255);
+    font-size: 0.8em;
+}
+
+.sidebar__list {
+    flex-grow: 1;
+    margin: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style: none;
+}
+
+.sidebar__list li {
+    margin: 10px;
+    background-color: var(--c-grey);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.sidebar__list a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+    font-size: 20px;
+}
+
+/* Desktop */
+@media (min-width: 700px) {
+    .sidebar__list {
+        flex-direction: column;
+    }
+}
