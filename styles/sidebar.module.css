@@ -5,18 +5,18 @@
 }
 
 .sidebar__list {
-    flex-grow: 1;
     margin: auto;
 
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
     list-style: none;
 }
 
 .sidebar__list li {
     margin: 10px;
-    background-color: var(--c-grey);
+    background-color: var(--c-light-grey);
     border-radius: 10px;
     text-align: center;
 }

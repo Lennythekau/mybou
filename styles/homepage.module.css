@@ -1,0 +1,26 @@
+.welcome {
+    font-size: 3rem;
+    font-weight: 300;
+    font-family: var(--font-merriweather);
+    padding-bottom: 1em;
+}
+
+.name {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 3.5rem;
+    color: hsl(230, 50%, 67%);
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card-title {
+    font-weight: 700;
+}
+
+.unread {
+    color: rgb(224, 132, 132);
+}

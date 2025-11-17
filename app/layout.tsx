@@ -1,10 +1,17 @@
 import Sidebar from "@/components/sidebar";
-import { Merriweather } from "next/font/google";
+import { Lexend, Merriweather, Playfair_Display } from "next/font/google";
 import "./global.css";
 
-const merriweather = Merriweather({
-    variable: "--font-merriweather"
-})
+const merriweather = Merriweather({ variable: "--font-merriweather" });
+const playfairDisplay = Playfair_Display({ variable: "--font-playfair-display" });
+const lexend = Lexend({ variable: "--font-lexend" });
+
+function loadFonts(): string {
+    return [
+        merriweather.variable, playfairDisplay.variable, lexend.variable
+    ].join(" ");
+}
+
 
 export default function Layout({
     children,
@@ -12,7 +19,7 @@ export default function Layout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="en" className={merriweather.variable}>
+        <html lang="en" className={loadFonts()}>
             <head>
                 <title>MyBou</title>
             </head>
