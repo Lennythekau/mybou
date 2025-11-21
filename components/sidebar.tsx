@@ -8,7 +8,7 @@ export default function Sidebar() {
             <li><Link href="/map">🗺️</Link></li>
             <li><Link href="/attendance">📋</Link></li>
             <li><Link href="#">📅</Link></li>
-            <li><Link href="#">🔎</Link></li>
+            <li><Link href="/search">🔎</Link></li>
         </ul>
     </nav>
 }
