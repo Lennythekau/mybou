@@ -1,6 +1,6 @@
+import "./global.css";
 import Sidebar from "@/components/sidebar";
 import { Lexend, Merriweather, Playfair_Display } from "next/font/google";
-import "./global.css";
 
 const merriweather = Merriweather({ variable: "--font-merriweather" });
 const playfairDisplay = Playfair_Display({ variable: "--font-playfair-display" });

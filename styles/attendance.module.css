@@ -1,0 +1,60 @@
+.attendance-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: inherit;
+}
+
+@media (width > 900px) {
+    .attendance-page {
+        flex-direction: row;
+    }
+}
+
+.attendance__input {
+    height: 2lh;
+    padding: 1em;
+    border-radius: 1em;
+    border: none;
+    color: hsl(218, 29%, 44%);
+}
+
+.attendance__button {
+    background-color: hsl(141, 56%, 64%);
+    border: none;
+    margin-left: 1em;
+    padding: 5px 1em;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+.attendance__my-day {
+    flex-grow: 1;
+}
+
+.attendance__my-day__title {
+    background-color: var(--c-blue);
+    font-size: 2rem;
+    padding: 0.5em 0.2em;
+    font-family: var(--font-merriweather);
+}
+
+.attendance__my-day__sessions {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    flex-grow: 0;
+}
+
+
+.attendance__form {
+    padding: 1em;
+    margin: 0 1em;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    border: 3px var(--c-purple) solid;
+    height: min-content;
+}

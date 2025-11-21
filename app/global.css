@@ -12,6 +12,8 @@
     --c-dark-grey: rgb(28, 27, 27);
     --c-grey: hsl(210 2 16);
     --c-light-grey: rgb(56, 56, 56);
+    --c-blue: hsl(228 34% 48%);
+    --c-purple: rgb(109, 107, 221);
     --header-height: 50px;
 }
 
@@ -57,7 +59,9 @@ body,
 main {
     flex-grow: 1;
     overflow: auto;
-
-    padding: 1em;
     background-color: var(--c-grey);
+}
+
+.padded-container {
+    padding: 1em;
 }

@@ -15,9 +15,18 @@
 .dashboard {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    gap: 1em;
 }
 
-.card-title {
+.card {
+    background-color: rgb(59, 59, 86);
+    padding: 1em;
+    box-shadow: 5px 5px 0px 1px var(--c-blue);
+    cursor: pointer;
+}
+
+
+.card__title {
     font-weight: 700;
 }
 

@@ -1,0 +1,8 @@
+.session__position {
+    color: hsl(0, 0%, 58%)
+}
+
+.session {
+    border: 3px var(--c-purple) solid;
+    padding: .8em;
+}

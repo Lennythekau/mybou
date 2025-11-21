@@ -6,7 +6,7 @@ export default function Sidebar() {
         <ul className={styles.sidebar__list}>
             <li><Link href="/">🏠</Link></li>
             <li><Link href="/map">🗺️</Link></li>
-            <li><Link href="#">📋</Link></li>
+            <li><Link href="/attendance">📋</Link></li>
             <li><Link href="#">📅</Link></li>
             <li><Link href="#">🔎</Link></li>
         </ul>
