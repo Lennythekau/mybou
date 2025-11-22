@@ -11,7 +11,7 @@
 :root {
     --c-dark-grey: rgb(28, 27, 27);
     --c-grey: hsl(210 2 16);
-    --c-light-grey: rgb(56, 56, 56);
+    --c-light-grey: rgb(49, 49, 49);
     --c-blue: hsl(228 34% 48%);
     --c-purple: rgb(109, 107, 221);
     --header-height: 50px;
@@ -24,6 +24,7 @@ header {
     height: var(--header-height);
     background: var(--c-dark-grey);
     color: white;
+
     font-size: calc(var(--header-height) - var(--header-padding) * 3);
     font-weight: 700;
 
@@ -36,6 +37,7 @@ header {
 
 header span {
     margin-left: 10px;
+    font-family: var(--font-merriweather);
 }
 
 body,
@@ -59,7 +61,7 @@ body,
 main {
     flex-grow: 1;
     overflow: auto;
-    background-color: var(--c-grey);
+    background-color: var(--c-light-grey);
 }
 
 .padded-container {

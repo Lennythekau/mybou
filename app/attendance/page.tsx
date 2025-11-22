@@ -27,42 +27,42 @@ export default function Page() {
             endTime: makeTimeToday(12),
         },
         {
-            id: 1,
+            id: 2,
             name: "CS & PP",
             room: "Teaching and Learning Building",
             startTime: makeTimeToday(10),
             endTime: makeTimeToday(12),
         },
         {
-            id: 1,
+            id: 3,
             name: "CS & PP",
             room: "Teaching and Learning Building",
             startTime: makeTimeToday(10),
             endTime: makeTimeToday(12),
         },
         {
-            id: 1,
+            id: 4,
             name: "CS & PP",
             room: "Teaching and Learning Building",
             startTime: makeTimeToday(10),
             endTime: makeTimeToday(12),
         },
         {
-            id: 1,
+            id: 5,
             name: "CS & PP",
             room: "Teaching and Learning Building",
             startTime: makeTimeToday(10),
             endTime: makeTimeToday(12),
         },
         {
-            id: 1,
+            id: 6,
             name: "CS & PP",
             room: "Teaching and Learning Building",
             startTime: makeTimeToday(10),
             endTime: makeTimeToday(12),
         },
         {
-            id: 1,
+            id: 7,
             name: "CS & PP",
             room: "Teaching and Learning Building",
             startTime: makeTimeToday(10),
@@ -75,7 +75,7 @@ export default function Page() {
             <section className={styles["attendance__my-day"]}>
                 <p className={styles["attendance__my-day__title"]}>My day</p>
                 <div className={styles["attendance__my-day__sessions"]}>
-                    {sessions.map((session, i) => <TimetabledSessionCard session={session} position={i + 1} key={session.id} />)}
+                    {sessions.map((session, i) => <TimetabledSessionCard session={session} position={i + 1} key={i + 1} />)}
                 </div>
             </section>
 

@@ -2,7 +2,7 @@
     font-size: 3rem;
     font-weight: 300;
     font-family: var(--font-merriweather);
-    padding-bottom: 1em;
+    margin: 2em unset;
 }
 
 .name {
@@ -18,18 +18,38 @@
     gap: 1em;
 }
 
-.card {
-    background-color: rgb(59, 59, 86);
-    padding: 1em;
-    box-shadow: 5px 5px 0px 1px var(--c-blue);
-    cursor: pointer;
+.quick-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1em;
 }
 
+.card {
+    background-color: var(--c-grey);
+    padding: 1em;
+    box-shadow: 5px 5px 0px 1px var(--c-purple);
+    display: inline-block;
+}
+
+.card ul {
+    list-style-type: none;
+    border: 3px var(--c-blue) dashed;
+
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
 
 .card__title {
     font-weight: 700;
+    margin-bottom: 1em;
 }
 
 .unread {
     color: rgb(224, 132, 132);
+}
+
+.section {
+    margin: 2em auto;
 }
