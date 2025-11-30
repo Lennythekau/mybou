@@ -1,40 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/create-next-app).
+# MyBou
 
-## Getting Started
+A proof-of-concept of my idealised version of the MyUoB website (WIP).
 
-First, run the development server:
+People complain that MyUoB can be unreliable and slow, while also having a non-modern UI.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This project is an attempt to reimagine what MyUoB _should_ be like.
+
+Although I have written code to allow for signing in with a Microsoft Account (as you would for MyUoB, Canvas etc), this app isn't currently authorised by the admins. As a result, the code would only allow you to sign in using your personal email, and **not** your uni email. So, this webapp is **not** a functional replacement for MyUoB (yet 😉).
+
+Until this app is sufficiently featured and tested, I am not planning on getting permission to integrate this app with real data. As a result, I have made a mock back-end, which emulates the attendance-recording feature of MyUoB.
+
+# Technical Details
+
+Frontend:
+
+- Typescript, Next.js.
+- API route set up for authentication; this is currently not in use, but will be to pull email/calendar data.
+- The server side of the Next.js app is a backend-for-frontend (BFF). Database code is instead written in the C# backend, see below. This is to separate the 'app' (MyBou) from the (mock)
+
+Backend:
+
+- C#, ASP.NET Core.
+- Currently limited to handling attendance. When spinning up the database, it is first cleared, then populated with timetabled lectures today. This is just to guarantee that you'll see something on the frontend.
+
+# Running the app:
+
+## Backend
+
+You'll need to set an environmental variable for the database password (DB_PWD). e.g. on Windows:
+
+```shell
+set DB_PWD=password
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then:
 
-You can start editing the page by modifying `app/route.ts`. The page auto-updates as you edit the file.
+```shell
+# Starting from project root:
+cd backend
+dotnet run
+```
 
-## Learn More
+## Frontend
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-## API Routes
-
-This directory contains example API routes for the headless API app.
-
-For more details, see [route.js file convention](https://nextjs.org/docs/app/api-reference/file-conventions/route).
+```shell
+# Starting from project root:
+cd frontend
+pnpm install
+pnpm run dev
+```

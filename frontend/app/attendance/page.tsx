@@ -1,74 +1,20 @@
 import TimetabledSessionCard from "@/components/timetabled-session-card";
 import styles from "@/styles/attendance.module.css";
 import { type TimetabledSession } from "@/types";
+import axios from "axios";
 
-const now = new Date();
+export default async function Page() {
 
-function makeTimeToday(hours: number, minutes?: number) {
-    return new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes || 0);
-}
+    const response = await axios.get("http://localhost:5066/timetable/1");
 
-export default function Page() {
+    let sessions: TimetabledSession[] = [];
 
+    (response.data as any[]).forEach(session => {
+        session.startTime = new Date(session.startTime);
+        session.endTime = new Date(session.endTime);
+    })
+    sessions = response.data as TimetabledSession[];
 
-    const sessions: TimetabledSession[] = [
-        {
-            id: 0,
-            name: "Object Oriented Programming",
-            room: "Teaching Building",
-            startTime: makeTimeToday(9),
-            endTime: makeTimeToday(10),
-        },
-        {
-            id: 1,
-            name: "CS & PP",
-            room: "Teaching and Learning Building",
-            startTime: makeTimeToday(10),
-            endTime: makeTimeToday(12),
-        },
-        {
-            id: 2,
-            name: "CS & PP",
-            room: "Teaching and Learning Building",
-            startTime: makeTimeToday(10),
-            endTime: makeTimeToday(12),
-        },
-        {
-            id: 3,
-            name: "CS & PP",
-            room: "Teaching and Learning Building",
-            startTime: makeTimeToday(10),
-            endTime: makeTimeToday(12),
-        },
-        {
-            id: 4,
-            name: "CS & PP",
-            room: "Teaching and Learning Building",
-            startTime: makeTimeToday(10),
-            endTime: makeTimeToday(12),
-        },
-        {
-            id: 5,
-            name: "CS & PP",
-            room: "Teaching and Learning Building",
-            startTime: makeTimeToday(10),
-            endTime: makeTimeToday(12),
-        },
-        {
-            id: 6,
-            name: "CS & PP",
-            room: "Teaching and Learning Building",
-            startTime: makeTimeToday(10),
-            endTime: makeTimeToday(12),
-        },
-        {
-            id: 7,
-            name: "CS & PP",
-            room: "Teaching and Learning Building",
-            startTime: makeTimeToday(10),
-            endTime: makeTimeToday(12),
-        },
-    ]
 
     return (
         <div className={styles["attendance-page"]}>

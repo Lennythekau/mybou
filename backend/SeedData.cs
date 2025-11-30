@@ -32,7 +32,7 @@ public static class SeedData
             Name = "OOP",
             Room = "CS Building",
             StartTime = _today.AddHours(11),
-            EndTime = _today.AddHours(1),
+            EndTime = _today.AddHours(13),
             AttendanceCode = 234
         },
 

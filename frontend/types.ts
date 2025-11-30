@@ -3,5 +3,6 @@ export type TimetabledSession = {
     name: string;
     room: string;
     startTime: Date;
-    endTime: Date
+    endTime: Date;
+    didAttend: boolean
 }
