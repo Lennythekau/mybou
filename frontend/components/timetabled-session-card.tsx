@@ -3,7 +3,6 @@ import styles from "@/styles/timetabled-session.module.css";
 import attendanceStyles from "@/styles/attendance.module.css"
 import axios from "axios";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 export default async function TimetabledSessionCard({ session, position }: { session: TimetabledSession, position: number }) {
     async function submitAttendanceAction(formData: FormData) {

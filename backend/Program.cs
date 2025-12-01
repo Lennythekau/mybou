@@ -35,20 +35,54 @@ using (var scope = app.Services.CreateScope())
     // reset the database each time we launch the server, just for testing purposes
     context.Database.EnsureDeleted();
     context.Database.EnsureCreated();
-
-    // Seed the database
-    SeedData.Students.ForEach((student) => context.Students.Add(student));
-    SeedData.TeachingSessions.ForEach((session) => context.TeachingSessions.Add(session));
-    SeedData.TimetabledSessions.ForEach((session) => context.TimetabledSessions.Add(session));
-    context.SaveChanges();
 }
+
+// Get student by id
+app.MapGet("/student/{id}", async ([FromRoute] int id, UniversityContext context) =>
+{
+    var student = await context.FindStudentById(id);
+    if (student == null)
+        return Results.NotFound($"No student with id={id}");
+
+    return Results.Ok(student);
+});
+
+// Get all students
+app.MapGet("/student", async (UniversityContext context) =>
+{
+    return Results.Ok(await context.Students.ToListAsync());
+});
+
+
+// Make a new student
+app.MapPost("/student", async ([FromBody] Student student, UniversityContext context) =>
+{
+
+    Console.WriteLine(student.Id);
+    Dictionary<string, string[]> validationErrors = [];
+
+    if (string.IsNullOrEmpty(student.FirstName))
+        validationErrors.Add("firstName", ["firstName is required"]);
+
+
+    if (string.IsNullOrEmpty(student.LastName))
+        validationErrors.Add("lastName", ["lastName is required"]);
+
+
+    if (validationErrors.Count > 0)
+        return Results.ValidationProblem(validationErrors);
+
+    context.Students.Add(student);
+    await context.SaveChangesAsync();
+    return Results.NoContent();
+});
 
 app.MapGet("/timetable/{id}", async ([FromRoute] int id, UniversityContext context) =>
 {
     // Check if there's a student
-    var student = await context.Students.FindAsync(id);
+    var student = await context.FindStudentById(id);
     if (student == null)
-        return null;
+        return Results.NotFound($"No student with id={id}");
 
     // Check for sessions today.
     var today = DateTime.UtcNow.Date;
@@ -68,9 +102,9 @@ app.MapGet("/timetable/{id}", async ([FromRoute] int id, UniversityContext conte
 app.MapPut("/timetable/{id}/register", async ([FromRoute] int id, [FromQuery] int sessionId, [FromQuery] int code, UniversityContext context) =>
 {
     // Check if there's a student
-    var student = await context.Students.FindAsync(id);
+    var student = await context.FindStudentById(id);
     if (student == null)
-        return Results.BadRequest($"No student exists with id={id}");
+        return Results.NotFound($"No student exists with id={id}");
 
     // Check if there is/was a session today with the correct session id.
     var today = DateTime.UtcNow.Date;
@@ -80,7 +114,7 @@ app.MapPut("/timetable/{id}/register", async ([FromRoute] int id, [FromQuery] in
         .FirstOrDefaultAsync();
 
     if (session == null)
-        return Results.BadRequest($"No timetabled session exists with session id = {sessionId} and student id={id} today.");
+        return Results.NotFound($"No timetabled session exists with session id = {sessionId} and student id={id} today.");
 
     // Check attendance code
     if (code != session.TeachingSession.AttendanceCode)
